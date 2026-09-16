@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #160b18, #35122d, #180b20);
+        font-family: Arial, sans-serif;
+        color: white;
+        overflow: hidden;
+    }
+
+    .hearts {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+    }
+
+    .heart {
+        position: absolute;
+        bottom: -30px;
+        font-size: 20px;
+        animation: float 6s linear infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes float {
+        from {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+        20% { opacity: 0.8; }
+        to {
+            transform: translateY(-110vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    .box {
+        width: 88%;
+        max-width: 430px;
+        padding: 32px 24px;
+        text-align: center;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 25px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+        animation: appear 0.6s ease;
+    }
+
+    @keyframes appear {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    #message {
+        font-size: 20px;
+        line-height: 1.6;
+        min-height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button {
+        border: none;
+        padding: 13px 30px;
+        border-radius: 30px;
+        background: #ff4f91;
+        color: white;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 5px 20px rgba(255,79,145,0.4);
+    }
+
+    button:active {
+        transform: scale(0.95);
+    }
+</style>
+</head>
+
+<body>
+
+<div class="hearts">
+    <span class="heart" style="left:10%;animation-delay:0s;">❤️</span>
+    <span class="heart" style="left:30%;animation-delay:2s;">💗</span>
+    <span class="heart" style="left:55%;animation-delay:1s;">❤️</span>
+    <span class="heart" style="left:80%;animation-delay:3s;">💖</span>
+</div>
+
+<div class="box">
+    <div id="message"></div>
+    <button id="next" onclick="nextPage()">Next</button>
+</div>
+
+<script>
+
+const pages = [
+`oyaaa be dmagii ouarat , bura na manni. Menu pta nahi mannughi 🤧, koini mann leya ta kii krlughii online 😁😚😘 agge dekh agge`,
+
+`asha sunn oh call te gal reh gi si na adhuri 👉👈 next dbaa!?`,
+
+`i love you too ❤️🌺🙃`,
+
+`luve uuu sooo much 👉👈❤️<br><br>palakuuuuu❤️`
+];
+
+let page = 0;
+
+function showPage() {
+    const message = document.getElementById("message");
+    const button = document.getElementById("next");
+
+    message.style.animation = "none";
+    void message.offsetWidth;
+    message.style.animation = "appear 0.6s ease";
+
+    message.innerHTML = pages[page];
+
+    if (page === 0) {
+        button.innerText = "agge dekh agge";
+    } 
+    else if (page === 1) {
+        button.innerText = "next dbaa!?";
+    }
+    else if (page === 2) {
+        button.innerText = "next dabbbbbbb";
+    }
+    else {
+        button.style.display = "none";
+    }
+}
+
+function nextPage() {
+    if (page < pages.length - 1) {
+        page++;
+        showPage();
+    }
+}
+
+showPage();
+
+</script>
+
+</body>
+</html>
